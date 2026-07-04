@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SecureCorp SOC</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial; background: #0a0a14; color: #e0e0e0; }
+        .navbar { background: #0d0d1a; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a3e; }
+        .navbar h3 { color: #00d4aa; font-size: 18px; letter-spacing: 1px; }
+        .nav-links a { color: #666; text-decoration: none; margin-left: 20px; font-size: 13px; }
+        .nav-links a:hover { color: #00d4aa; }
+        .nav-links a.active { color: #00d4aa; font-weight: 600; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: #0d0d1a; border: 1px solid #1a1a3e; border-radius: 8px; padding: 20px; }
+        .stat-card .num { font-size: 28px; font-weight: 700; }
+        .stat-card .label { font-size: 12px; color: #666; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-critical .num { color: #ff4d6d; }
+        .stat-high .num { color: #ff8c42; }
+        .stat-medium .num { color: #ffd93d; }
+        .stat-low .num { color: #4ecca3; }
+        .panel { background: #0d0d1a; border: 1px solid #1a1a3e; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .panel h4 { color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th { text-align: left; color: #666; font-weight: 400; padding: 8px 10px; border-bottom: 1px solid #1a1a3e; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+        td { padding: 10px; border-bottom: 1px solid #111122; color: #aaa; }
+        .severity { padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+        .sev-critical { background: #2a1a1a; color: #ff4d6d; }
+        .sev-high { background: #2a1a10; color: #ff8c42; }
+        .sev-medium { background: #2a2a10; color: #ffd93d; }
+        .sev-low { background: #0a1a10; color: #4ecca3; }
+        .status-indicator { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+        .status-up { background: #4ecca3; }
+        .status-down { background: #ff4d6d; }
+        .status-warn { background: #ffd93d; }
+        .footer { text-align: center; padding: 20px; color: #333; font-size: 11px; }
+        .blink { animation: blink 1.5s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .incident-id { color: #00d4aa; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h3>SECURECORP SOC</h3>
+        <div class="nav-links">
+            <a href="/dashboard.html" class="active">Dashboard</a>
+            <a href="/profile.html">Settings</a>
+            <a href="#" id="logout-link">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="stats-row">
+            <div class="stat-card stat-critical">
+                <div class="num" id="alert-critical">12</div>
+                <div class="label">Critical</div>
+            </div>
+            <div class="stat-card stat-high">
+                <div class="num" id="alert-high">47</div>
+                <div class="label">High</div>
+            </div>
+            <div class="stat-card stat-medium">
+                <div class="num" id="alert-medium">89</div>
+                <div class="label">Medium</div>
+            </div>
+            <div class="stat-card stat-low">
+                <div class="num" id="alert-low">203</div>
+                <div class="label">Low</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h4>Recent Incidents</h4>
+            <table>
+                <thead>
+                    <tr><th>Incident ID</th><th>Type</th><th>Source</th><th>Severity</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="incident-id">INC-2026-7841</td><td>Brute Force</td><td>203.45.67.89</td><td><span class="severity sev-critical">Critical</span></td><td><span class="status-indicator status-down"></span>Investigating</td></tr>
+                    <tr><td class="incident-id">INC-2026-7840</td><td>SQL Injection</td><td>api-endpoint-3</td><td><span class="severity sev-high">High</span></td><td><span class="status-indicator status-warn"></span>In Progress</td></tr>
+                    <tr><td class="incident-id">INC-2026-7839</td><td>Unusual Login</td><td>192.168.1.45</td><td><span class="severity sev-medium">Medium</span></td><td><span class="status-indicator status-up"></span>Resolved</td></tr>
+                    <tr><td class="incident-id">INC-2026-7838</td><td>Port Scan</td><td>10.0.0.12</td><td><span class="severity sev-low">Low</span></td><td><span class="status-indicator status-up"></span>Resolved</td></tr>
+                    <tr><td class="incident-id">INC-2026-7837</td><td>Malware Detected</td><td>endpoint-ws-04</td><td><span class="severity sev-critical">Critical</span></td><td><span class="status-indicator status-down"></span>Investigating</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel">
+            <h4>System Health</h4>
+            <table>
+                <thead>
+                    <tr><th>Service</th><th>Status</th><th>Uptime</th><th>Last Check</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>SIEM Engine</td><td><span class="status-indicator status-up"></span> Operational</td><td>14d 6h</td><td>Just now</td></tr>
+                    <tr><td>Log Collector</td><td><span class="status-indicator status-up"></span> Operational</td><td>14d 6h</td><td>Just now</td></tr>
+                    <tr><td>Threat Intel</td><td><span class="status-indicator status-warn"></span> Degraded</td><td>2d 3h</td><td>2 min ago</td></tr>
+                    <tr><td>Alert Manager</td><td><span class="status-indicator status-up"></span> Operational</td><td>14d 6h</td><td>Just now</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">SecureCorp SOC v2.1 | Monitoring since 2024</div>
+    </div>
+    <script src="/js/app.js"></script>
+</body>
+</html>

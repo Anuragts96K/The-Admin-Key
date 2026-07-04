@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SecureCorp SOC - Login</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial; background: #0a0a14; color: #e0e0e0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { background: #0d0d1a; padding: 40px; border-radius: 8px; width: 380px; border: 1px solid #1a1a3e; }
+        h2 { color: #00d4aa; font-size: 20px; letter-spacing: 1px; margin-bottom: 5px; text-align: center; }
+        .subtitle { color: #444; font-size: 12px; margin-bottom: 30px; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+        label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 1px; display: block; margin-top: 15px; margin-bottom: 6px; }
+        input { width: 100%; padding: 10px; background: #0a0a14; border: 1px solid #1a1a3e; color: #e0e0e0; border-radius: 4px; font-size: 14px; }
+        input:focus { outline: none; border-color: #00d4aa; }
+        button { width: 100%; padding: 12px; margin-top: 25px; background: #00d4aa; color: #0a0a14; border: none; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        button:hover { background: #00b894; }
+        .error { color: #ff4d6d; margin-top: 10px; font-size: 13px; text-align: center; }
+        .note { margin-top: 25px; padding: 10px; border-top: 1px solid #1a1a3e; font-size: 11px; color: #333; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>SECURECORP SOC</h2>
+        <p class="subtitle">Access Portal</p>
+        <form id="loginForm">
+            <label>Username</label>
+            <input type="text" id="username" value="user">
+            <label>Password</label>
+            <input type="password" id="password" value="Best@fluck">
+            <button type="submit">Sign In</button>
+            <div id="login-error" class="error"></div>
+        </form>
+        <div class="note">Authorized personnel only</div>
+    </div>
+    <script src="/js/crypto.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

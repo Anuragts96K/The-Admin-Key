@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SecureCorp SOC - Settings</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial; background: #0a0a14; color: #e0e0e0; }
+        .navbar { background: #0d0d1a; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a3e; }
+        .navbar h3 { color: #00d4aa; font-size: 18px; letter-spacing: 1px; }
+        .nav-links a { color: #666; text-decoration: none; margin-left: 20px; font-size: 13px; }
+        .nav-links a:hover { color: #00d4aa; }
+        .nav-links a.active { color: #00d4aa; font-weight: 600; }
+        .container { max-width: 500px; margin: 40px auto; padding: 0 20px; }
+        .card { background: #0d0d1a; border: 1px solid #1a1a3e; border-radius: 8px; padding: 30px; }
+        .card h3 { color: #00d4aa; font-size: 16px; margin-bottom: 5px; }
+        .sub { color: #666; font-size: 13px; margin-bottom: 20px; }
+        label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 1px; display: block; margin-top: 15px; margin-bottom: 6px; }
+        input { width: 100%; padding: 10px; background: #0a0a14; border: 1px solid #1a1a3e; color: #e0e0e0; border-radius: 4px; font-size: 14px; font-family: monospace; }
+        input:focus { outline: none; border-color: #00d4aa; }
+        button { width: 100%; padding: 12px; margin-top: 25px; background: #00d4aa; color: #0a0a14; border: none; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        button:hover { background: #00b894; }
+        .result-box { margin-top: 15px; padding: 12px; border-radius: 4px; font-size: 13px; display: none; }
+        .result-box.error { display: block; background: #1a0a0a; border: 1px solid #ff4d6d; color: #ff4d6d; }
+        .result-box.success { display: block; background: #0a1a0a; border: 1px solid #4ecca3; color: #4ecca3; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h3>SECURECORP SOC</h3>
+        <div class="nav-links">
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="/profile.html" class="active">Settings</a>
+            <a href="#" id="logout-link">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h3>Change Password</h3>
+            <p class="sub">Update your SOC account credentials</p>
+            <form id="changePasswordForm">
+                <label>Current Password</label>
+                <input type="password" id="current-password" placeholder="Enter current password">
+                <label>New Password</label>
+                <input type="password" id="new-password" placeholder="Enter new password">
+                <label>Confirm New Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm new password">
+                <button type="submit">Update Password</button>
+            </form>
+            <div id="result" class="result-box"></div>
+        </div>
+    </div>
+    <script src="/js/crypto.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
