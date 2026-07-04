@@ -101,7 +101,7 @@ router.post('/profile/change-password', (req, res) => {
 
     res.json({
         success: true,
-        message: 'Congratulations! Here is your flag: flag{you_are_the_g.o.a.t}'
+        message: 'Congratulations! Here is your flag: FLAG{you_are_the_g.o.a.t}'
     });
 });
 
